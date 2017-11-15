@@ -44,36 +44,71 @@
 				</section>
 					<section data-markdown>
 					<textarea data-template>
-					## A third slide
+						## OpenPowerLifting
 
-					With TWOOOO text areas?
-
-					```python
-					athletes = (Athletes.table.id).filter(total_kg)
-					return render_template('Athletes.html', athletes = athletes.items)
-					```
+						- Over 7,000 powerlifting meets
+						- Over 123,000 athletes
+						- Over 253,000 lifts
 					</textarea>
 				</section>
 				<section data-markdown>
 					<textarea data-template>
-					# You might think this is about databases
+					## Our Question
 
-					## nope
+					### These people are strong. How strong?
 
-					### This is about anime
+					#### How much stronger than me?
+
+					(The answer is much, much stronger)
 					</textarea>
 				</section>
-				<section>
-					<h1>Like this garbage</h1>
-				   <img data-src="img/anime.jpg">
-				   <p>(You already know)</p>
+				<section data-markdown>
+					<textarea data-template>
+						## The Tech Stack
+
+						- Postgres Server Running on Amazon
+						- Flask server
+						- Deployment from GitHub master Branch to Heroku
+					</textarea>
+			    </section>
+				<section data-markdown>
+					<textarea data-template>
+						## Search
+
+						- Search through Athletes, Lifts, and Meets
+						- Can search on athlete name, lift size, age, and bodyweight
+						- Can search meets based on country
+					</textarea>
 			    </section>
 			    <section>
 					<section>
-					 <h1>Vertical Slide 1</h1>
+					 <h1>Flask Models</h1>
+					 - Flask SqlAlchemy provides an ORM to Postgres
+					 - So instead of writing raw sql into psycopg2 we can use object oriented principles we're used to.
+
 					</section>
-					<section>
-					<h1>Vertical Slide 2</h1>
+					<section data-markdown>
+						<textarea data-template>
+							### Psycopg2 driver (ugly)
+							```python
+							# Connect to an existing database
+							>>> conn = psycopg2.connect("dbname=test user=postgres")
+							# Open a cursor to perform database operations
+							>>> cur = conn.cursor()
+							# Execute a command: this creates a new table
+							>>> cur.execute("CREATE TABLE test (id serial PRIMARY KEY, num integer, data varchar);")
+							```
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+							### Flask-Sqlalchemy (Art)
+							```python
+							total = float(deadlift) + float(squat) + float(bench)
+							athlete_lifts = Athlete_lifts.query.order_by(desc(Athlete_lifts.total_kg)).all()
+							lifts = [float(lift.total_kg) for lift in athlete_lifts]
+							```
+						</textarea>
 					</section>
 				</section>
 			</div>
